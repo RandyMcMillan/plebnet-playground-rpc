@@ -11,8 +11,8 @@ import (
 	"strings"
 
 	"github.com/urfave/cli/v2"
-	"github.com/vulpemventures/nigiri/internal/config"
-	"github.com/vulpemventures/nigiri/internal/state"
+	"github.com/randymcmillan/plebnet-playground-rpc/internal/config"
+	"github.com/randymcmillan/plebnet-playground-rpc/internal/state"
 )
 
 var (

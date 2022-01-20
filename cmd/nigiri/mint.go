@@ -12,8 +12,8 @@ import (
 	"strings"
 
 	"github.com/urfave/cli/v2"
-	"github.com/vulpemventures/nigiri/internal/config"
-	"github.com/vulpemventures/nigiri/internal/docker"
+	"github.com/randymcmillan/plebnet-playground-rpc/internal/config"
+	"github.com/randymcmillan/plebnet-playground-rpc/internal/docker"
 )
 
 var mint = cli.Command{

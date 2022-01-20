@@ -8,7 +8,7 @@ import (
 	"strconv"
 
 	"github.com/urfave/cli/v2"
-	"github.com/vulpemventures/nigiri/internal/config"
+	"github.com/randymcmillan/plebnet-playground-rpc/internal/config"
 )
 
 var stop = cli.Command{

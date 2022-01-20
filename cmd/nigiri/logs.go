@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 
 	"github.com/urfave/cli/v2"
-	"github.com/vulpemventures/nigiri/internal/config"
+	"github.com/randymcmillan/plebnet-playground-rpc/internal/config"
 )
 
 var logs = cli.Command{

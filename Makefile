@@ -12,6 +12,8 @@ clean:
 
 ## build: build binary
 build:
+	go get github.com/randymcmillan/plebnet-playground-rpc/internal/config
+	go get github.com/randymcmillan/plebnet-playground-rpc/internal/docker
 	chmod u+x ./scripts/build
 	./scripts/build
 

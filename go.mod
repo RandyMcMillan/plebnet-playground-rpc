@@ -1,4 +1,4 @@
-module github.com/vulpemventures/nigiri
+module github.com/randymcmillan/plebnet-playground-rpc
 
 go 1.16
 
