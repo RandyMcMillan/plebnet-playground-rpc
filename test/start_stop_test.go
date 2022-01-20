@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/vulpemventures/nigiri/internal/config"
-	"github.com/vulpemventures/nigiri/internal/state"
+	"github.com/randymcmillan/plebnet-playground-rpc/internal/config"
+	"github.com/randymcmillan/plebnet-playground-rpc/internal/state"
 )
 
 const (
@@ -23,7 +23,7 @@ var (
 	// deleteCmd      = append(stopCmd, "--delete")
 	startCmd = "start"
 	// liquidStartCmd = append(startCmd, "--liquid")
-	tmpDatadir  = filepath.Join(os.TempDir(), "nigiri-tmp")
+	tmpDatadir  = filepath.Join(os.TempDir(), "play-tmp")
 	nigiriState = state.New(filepath.Join(tmpDatadir, config.DefaultName), config.InitialState)
 )
 
