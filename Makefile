@@ -19,7 +19,7 @@ build:
 
 ## release: build and upload binaries to Github Releases
 release:
-	goreleaser
+	GITHUB_TOKEN=$(shell cat ~/GH_TOKEN.txt)  goreleaser --rm-dist
 
 ## dry-release: build and test goreleaser
 dry-release:
