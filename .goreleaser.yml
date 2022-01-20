@@ -33,7 +33,8 @@ changelog:
       - "^test:"
 archives:
   - format: binary
-    name_template: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}"
+    #name_template: "{{ .ProjectName }}-{{ .Os }}-{{ .Arch }}"
+    name_template: "play-{{ .Os }}-{{ .Arch }}"
 
 release:
   prerelease: auto
