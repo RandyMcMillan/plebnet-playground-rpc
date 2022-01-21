@@ -44,7 +44,7 @@ func main() {
 	app := cli.NewApp()
 
 	app.Version = formatVersion()
-	app.Name = "nigiri CLI"
+	app.Name = "plebnet-playground-rpc"
 	app.Usage = "create your dockerized environment with a bitcoin and liquid node, with a block explorer and developer tools"
 	app.Flags = append(app.Flags, &datadirFlag)
 	app.Commands = append(

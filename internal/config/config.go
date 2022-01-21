@@ -8,10 +8,10 @@ import (
 )
 
 var (
-	DefaultName    = "nigiri.config.json"
+	DefaultName    = "playground.config.json"
 	DefaultCompose = "docker-compose.yml"
 
-	DefaultDatadir = btcutil.AppDataDir("nigiri", false)
+	DefaultDatadir = btcutil.AppDataDir("playground", false)
 	DefaultPath    = filepath.Join(DefaultDatadir, DefaultName)
 
 	InitialState = map[string]string{
