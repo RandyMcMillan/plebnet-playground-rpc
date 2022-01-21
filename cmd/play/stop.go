@@ -13,7 +13,7 @@ import (
 
 var stop = cli.Command{
 	Name:   "stop",
-	Usage:  "stop nigiri",
+	Usage:  "stop plebnet-playground",
 	Action: stopAction,
 	Flags: []cli.Flag{
 		&liquidFlag,
@@ -54,7 +54,7 @@ func stopAction(ctx *cli.Context) error {
 			return err
 		}
 
-		fmt.Println("Nigiri has been cleaned up successfully.")
+		fmt.Println("The playground has been cleaned up successfully.")
 	} else {
 		if err := nigiriState.Set(map[string]string{
 			"running": strconv.FormatBool(false),

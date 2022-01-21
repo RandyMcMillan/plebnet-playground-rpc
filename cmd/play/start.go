@@ -16,7 +16,7 @@ import (
 
 var start = cli.Command{
 	Name:   "start",
-	Usage:  "start nigiri",
+	Usage:  "start plebnet-playground",
 	Action: startAction,
 	Flags: []cli.Flag{
 		&liquidFlag,
@@ -31,7 +31,7 @@ var start = cli.Command{
 func startAction(ctx *cli.Context) error {
 
 	if isRunning, _ := nigiriState.GetBool("running"); isRunning {
-		return errors.New("nigiri is already running, please stop it first")
+		return errors.New("plebnet-playground is already running, please stop it first")
 	}
 
 	isLiquid := ctx.Bool("liquid")
