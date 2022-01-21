@@ -8,11 +8,19 @@ export DOCKER
 DOCKER_COMPOSE:=$(shell which docker-compose)
 export DOCKER_COMPOSE
 
+GOPATH:=$(HOME)/go
+export GOPATH
+#export PATH=$(PATH):$(shell go env GOPATH)/bin
+
 .PHONY: - install clean build release dry-release cov fmt help vet test
 -: help
+##
 ## make [arg]
 ##      init: initialize some go dependancies
+##
 init:
+	@[ "$(shell uname -s)" == "Darwin" ] && test brew &&  brew install -q golang; break || echo "install homebrew - brew.sh"
+	@[ "$(shell uname -s)" == "Linux"  ] && test apt  &&  apt  install    golang; break || echo "go language not installed"
 	test go && go mod download
 	test go && go mod tidy
 	test go && go get github.com/randymcmillan/plebnet-playground-rpc/internal/config
@@ -43,7 +51,8 @@ dry-release:
 
 ##      help: prints this help message
 help:
-	@echo "Usage: \n"
+	@echo "\n"
+	@echo "Usage: make [arg] \n"
 	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'
 
 ##      fmt: Go Format
