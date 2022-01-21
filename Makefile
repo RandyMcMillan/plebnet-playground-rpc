@@ -1,3 +1,5 @@
+SHELL := /bin/bash
+
 PWD ?= pwd_unknown
 TIME									:= $(shell date +%s)
 export TIME
@@ -19,8 +21,8 @@ export GOPATH
 ##      init: initialize some go dependancies
 ##
 init:
-	@[ "$(shell uname -s)" == "Darwin" ] && test brew &&  brew install -q golang; break || echo "install homebrew - brew.sh"
-	@[ "$(shell uname -s)" == "Linux"  ] && test apt  &&  apt  install    golang; break || echo "go language not installed"
+	@[ "$(shell uname -s)" == "Darwin" ] && test brew &&  brew install -q golang || echo $(shell uname -s)
+	@[ "$(shell uname -s)" == "Linux"  ] && test apt  &&  apt  install golang || echo $(shell uname -s)
 	test go && go mod download
 	test go && go mod tidy
 	test go && go get github.com/randymcmillan/plebnet-playground-rpc/internal/config
