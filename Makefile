@@ -23,7 +23,7 @@ export GOPATH
 init:
 	@[ "$(shell uname -s)" == "Darwin" ] && test brew &&  brew install -q golang docker docker-compose || echo $(shell uname -s)
 	@[ "$(shell uname -s)" == "Linux"  ] && test apt  &&  apt  install    golang docker docker-compose || echo $(shell uname -s)
-	docker-compose -f cmd/play/resources/docker-compose.yml pull
+	$(DOCKER_COMPOSE) -f cmd/play/resources/docker-compose.yml pull
 	test go && go mod download
 	test go && go mod tidy
 	test go && go get github.com/randymcmillan/plebnet-playground-rpc/internal/config
@@ -41,7 +41,7 @@ clean:
 
 ##      build: build binary
 build:
-	docker-compose -f cmd/play/resources/docker-compose.yml build
+	$(DOCKER_COMPOSE) -f cmd/play/resources/docker-compose.yml build
 	chmod u+x ./scripts/build
 	./scripts/build
 
