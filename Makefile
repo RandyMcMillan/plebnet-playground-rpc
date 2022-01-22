@@ -21,8 +21,12 @@ export GOPATH
 ##      init: initialize some go dependancies
 ##
 init:
-	@[ "$(shell uname -s)" == "Darwin" ] && test brew &&  brew install -q golang || echo $(shell uname -s)
-	@[ "$(shell uname -s)" == "Linux"  ] && test apt  &&  apt  install golang || echo $(shell uname -s)
+	@[ "$(shell uname -s)" == "Darwin" ] && test brew &&  brew install -q golang docker docker-compose || echo $(shell uname -s)
+	@[ "$(shell uname -s)" == "Linux"  ] && test apt  &&  apt  install    golang docker docker-compose || echo $(shell uname -s)
+
+
+
+	docker-compose -f cmd/play/resources/docker-compose.yml pull
 	test go && go mod download
 	test go && go mod tidy
 	test go && go get github.com/randymcmillan/plebnet-playground-rpc/internal/config

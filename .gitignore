@@ -6,3 +6,5 @@ build/
 dist/
 
 dist/
+
+cmd/play/resources/volumes/
