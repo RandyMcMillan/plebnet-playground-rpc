@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 PWD ?= pwd_unknown
-TIME									:= $(shell date +%s)
+TIME                                   := $(shell date +%s)
 export TIME
 PROJECT_NAME = $(notdir $(PWD))
 export PROJECT_NAME
@@ -9,6 +9,17 @@ DOCKER:=$(shell which docker)
 export DOCKER
 DOCKER_COMPOSE:=$(shell which docker-compose)
 export DOCKER_COMPOSE
+
+ARCH                                   :=$(shell uname -m)
+export ARCH
+ifeq ($(ARCH),x86_64)
+TRIPLET                                :=x86_64-linux-gnu
+export TRIPLET
+endif
+ifeq ($(ARCH),arm64)
+TRIPLET                                :=aarch64-linux-gnu
+export TRIPLET
+endif
 
 GOPATH:=$(HOME)/go
 export GOPATH
@@ -31,8 +42,8 @@ init:
 
 ##      install: installs dependencies
 install:
-#	go mod download
-#	go mod tidy
+	@[ "$(shell uname -s)" == "Darwin" ] && echo $(shell uname -s) & exit
+	@[ "$(shell uname -s)" == "Linux"  ] && echo $(shell uname -s) & exit
 
 ##      clean: cleans the binary
 clean:
