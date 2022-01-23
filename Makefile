@@ -42,6 +42,7 @@ init:
 install:
 	@[ "$(shell uname -s)" == "Darwin" ] && echo $(shell uname -s) & exit
 	@[ "$(shell uname -s)" == "Linux"  ] && echo $(shell uname -s) & exit
+	pushd cmd/docker/plebnet-playground-docker && make install
 
 ##    clean:cleans the binary
 clean:
