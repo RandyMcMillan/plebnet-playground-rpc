@@ -46,6 +46,7 @@ install:
 ##    clean:cleans the binary
 clean:
 	@echo "Cleaning..."
+	rm -rf dist
 	go clean
 
 ##    build:build plebnet-playground-docker images and rpc binary
