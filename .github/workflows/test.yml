@@ -35,6 +35,13 @@ jobs:
 
       - name: Test
         run: |
+          make
+          make help
+          make init
+          make build
+          make install
           make fmt
           make install
           make test-ci
+          make clean
+
