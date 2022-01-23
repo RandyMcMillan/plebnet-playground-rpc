@@ -35,8 +35,8 @@ var datadirFlag = cli.StringFlag{
 	Value: config.DefaultDatadir,
 }
 
-//go:embed resources/docker-compose.yml
-//go:embed resources/bitcoin.conf
+//go:embed plebnet-playground-docker/docker-compose.yaml
+//go:embed plebnet-playground-docker/bitcoin-signet/bitcoin.conf
 //go:embed resources/elements.conf
 var f embed.FS
 
@@ -109,21 +109,21 @@ func provisionResourcesToDatadir(datadir string) error {
 
 	// copy resources into the Nigiri data directory
 	if err := copyFromResourcesToDatadir(
-		filepath.Join("resources", config.DefaultCompose),
+		filepath.Join("plebnet-playground-docker", config.DefaultCompose),
 		filepath.Join(datadir, config.DefaultCompose),
 	); err != nil {
 		return err
 	}
 
 	if err := copyFromResourcesToDatadir(
-		filepath.Join("resources", "bitcoin.conf"),
+		filepath.Join("plebnet-playground-docker", "bitcoin-sigent/bitcoin.conf"),
 		filepath.Join(datadir, "volumes", "bitcoin", "bitcoin.conf"),
 	); err != nil {
 		return err
 	}
 
 	if err := copyFromResourcesToDatadir(
-		filepath.Join("resources", "elements.conf"),
+		filepath.Join("plebnet-playground-docker", "elements.conf"),
 		filepath.Join(datadir, "volumes", "elements", "elements.conf"),
 	); err != nil {
 		return err

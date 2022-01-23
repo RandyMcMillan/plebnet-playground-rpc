@@ -1,3 +1,6 @@
 [submodule "cmd/docker/resources"]
 	path = cmd/docker/resources
 	url = https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker.git
+[submodule "cmd/docker/plebnet-playground-docker"]
+	path = cmd/docker/plebnet-playground-docker
+	url = https://github.com/PLEBNET-PLAYGROUND/plebnet-playground-docker.git
