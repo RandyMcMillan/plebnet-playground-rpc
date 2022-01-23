@@ -48,9 +48,9 @@ clean:
 	@echo "Cleaning..."
 	go clean
 
-##    build:build binary
+##    build:build plebnet-playground-docker images and rpc binary
 build:
-	$(DOCKER_COMPOSE) -f cmd/docker/plebnet-playground-docker/docker-compose.yaml build
+	pushd cmd/docker/plebnet-playground-docker && make build para=true
 	chmod u+x ./scripts/build
 	./scripts/build
 
