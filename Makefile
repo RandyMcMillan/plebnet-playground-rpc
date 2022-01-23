@@ -27,10 +27,7 @@ export GOPATH
 
 .PHONY: - install clean build release dry-release cov fmt help vet test
 -: help
-##
-## make [arg]
-##      init: initialize some plebnet-playground (go and docker) dependancies
-##
+##    init:initialize some plebnet-playground (go and docker) dependancies
 init:
 	@[ "$(shell uname -s)" == "Darwin" ] && test brew &&  brew install -q golang docker docker-compose || echo $(shell uname -s)
 	@[ "$(shell uname -s)" == "Linux"  ] && test apt  &&  apt  install    golang docker docker-compose || echo $(shell uname -s)
@@ -41,57 +38,60 @@ init:
 	test go && go get github.com/randymcmillan/plebnet-playground-rpc/internal/config
 	test go && go get github.com/randymcmillan/plebnet-playground-rpc/internal/docker
 
-##      install: installs dependencies
+##    install:installs dependencies
 install:
 	@[ "$(shell uname -s)" == "Darwin" ] && echo $(shell uname -s) & exit
 	@[ "$(shell uname -s)" == "Linux"  ] && echo $(shell uname -s) & exit
 
-##      clean: cleans the binary
+##    clean:cleans the binary
 clean:
 	@echo "Cleaning..."
 	go clean
 
-##      build: build binary
+##    build:build binary
 build:
 	$(DOCKER_COMPOSE) -f cmd/docker/plebnet-playground-docker/docker-compose.yaml build
 	chmod u+x ./scripts/build
 	./scripts/build
 
-##      release: build and upload binaries to Github Releases
+##    release:build and upload binaries to Github Releases
 release:
 	GITHUB_TOKEN=$(shell cat ~/GH_TOKEN.txt)  goreleaser --rm-dist
 
-##      dry-release: build and test goreleaser
+##    dry-release:build and test goreleaser
 dry-release:
 	goreleaser --snapshot --skip-publish --rm-dist
 
-##      help: prints this help message
+##    help:prints this help message
 help:
-	@echo "\n"
-	@echo "Usage: make [arg] \n"
+	@echo ""
+	@echo "Usage:"
+	@echo ""
+	@echo "make [arg]"
+	@echo ""
 	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'
 
-##      fmt: Go Format
+##    fmt:Go Format
 fmt:
 	@echo "Gofmt..."
 	@if [ -n "$(gofmt -l .)" ]; then echo "Go code is not formatted"; exit 1; fi
 
-##      vet: code analysis
+##    vet:code analysis
 vet:
 	@echo "Vet..."
 	@go vet ./...
 
-##      test: runs go unit test with default values
+##    test:runs go unit test with default values
 test: clean install
 	@echo "Testing..."
 	go test -v -count=1 -race ./...
 
-##      test-ci: runs travis tests
+##    test-ci:runs travis tests
 test-ci: clean
 	@echo "Testing..."
 	go test -short -v ./...
 
-##      cov: generates coverage report
+##    cov:generates coverage report
 cov:
 	@echo "Coverage..."
 	go test -cover ./...
