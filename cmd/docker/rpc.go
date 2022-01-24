@@ -28,10 +28,12 @@ func rpcAction(ctx *cli.Context) error {
 		return errors.New("nigiri is not running")
 	}
 
-	isLiquid := ctx.Bool("liquid")
-	rpcWallet := ctx.String("rpcwallet")
+    isLiquid := ctx.Bool("liquid")
+    rpcWallet := ctx.String("playground-wallet")
+    network := ctx.String("signet")
+    datadir := ctx.String("/root/.bitcoin")
 
-	rpcArgs := []string{"exec", "bitcoin", "bitcoin-cli", "-datadir=config", "-rpcwallet=" + rpcWallet}
+    rpcArgs := []string{"exec", "playground-bitcoind", "bitcoin-cli", "-" + network, "-rpcwallet=" + rpcWallet }
 	if isLiquid {
 		rpcArgs = []string{"exec", "liquid", "elements-cli", "-datadir=config", "-rpcwallet=" + rpcWallet}
 	}
