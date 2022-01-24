@@ -9,7 +9,7 @@ import (
 
 var (
 	DefaultName    = "playground.config.json"
-	DefaultCompose = "docker-compose.yml"
+	DefaultCompose = "cmd/docker/plebnet-playground-docker/docker-compose.yaml"
 
 	DefaultDatadir = btcutil.AppDataDir("playground", false)
 	DefaultPath    = filepath.Join(DefaultDatadir, DefaultName)

@@ -39,7 +39,8 @@ func startAction(ctx *cli.Context) error {
 	composePath := filepath.Join(datadir, config.DefaultCompose)
 
 	// spin up all the services in the compose file
-	bashCmd := exec.Command("docker-compose", "-f", composePath, "up", "-d", "esplora")
+    //REF: internal/config/config.go
+	bashCmd := exec.Command("docker-compose", "-f", config.DefaultCompose, "up")
 	if isLiquid {
 		//this will only run chopsticks & chopsticks-liquid and servives they depends on
 		bashCmd = exec.Command("docker-compose", "-f", composePath, "up", "-d", "esplora", "esplora-liquid")
