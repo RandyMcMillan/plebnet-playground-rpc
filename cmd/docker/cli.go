@@ -8,10 +8,10 @@ import (
 	"github.com/urfave/cli/v2"
 )
 
-var rpc = cli.Command{
-	Name:   "rpc",
-	Usage:  "invoke bitcoin-cli or elements-cli",
-	Action: rpcAction,
+var command = cli.Command{
+	Name:   "cli",
+	Usage:  "invoke bitcoin-cli",
+	Action: cliAction,
 	Flags: []cli.Flag{
 		&liquidFlag,
 		&cli.StringFlag{
@@ -22,7 +22,7 @@ var rpc = cli.Command{
 	},
 }
 
-func rpcAction(ctx *cli.Context) error {
+func cliAction(ctx *cli.Context) error {
 
 	if isRunning, _ := nigiriState.GetBool("running"); !isRunning {
 		return errors.New("nigiri is not running")
