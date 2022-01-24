@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"path/filepath"
+	//"path/filepath"
 	"strconv"
 
 	"github.com/urfave/cli/v2"
@@ -28,12 +28,14 @@ var stop = cli.Command{
 func stopAction(ctx *cli.Context) error {
 
 	delete := ctx.Bool("delete")
-	datadir := ctx.String("datadir")
-	composePath := filepath.Join(datadir, config.DefaultCompose)
+	//datadir := ctx.String("datadir")
+	//composePath := filepath.Join(datadir, config.DefaultCompose)
 
 	bashCmd := exec.Command("docker-compose", "-f", config.DefaultCompose, "stop")
 	if delete {
-		bashCmd = exec.Command("docker-compose", "-f", composePath, "down", "--volumes")
+		bashCmd = exec.Command("docker-compose", "-f", config.DefaultCompose, "down")
+		//bashCmd = exec.Command("docker-compose", "-f", config.DefaultCompose, "down", "--volumes")
+		bashCmd = exec.Command("docker-compose", "-f", config.DefaultCompose, "down", "--remove-orphans")
 	}
 	bashCmd.Stdout = os.Stdout
 	bashCmd.Stderr = os.Stderr
