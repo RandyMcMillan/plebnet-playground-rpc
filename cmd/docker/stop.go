@@ -31,7 +31,7 @@ func stopAction(ctx *cli.Context) error {
 	datadir := ctx.String("datadir")
 	composePath := filepath.Join(datadir, config.DefaultCompose)
 
-	bashCmd := exec.Command("docker-compose", "-f", composePath, "stop")
+	bashCmd := exec.Command("docker-compose", "-f", config.DefaultCompose, "stop")
 	if delete {
 		bashCmd = exec.Command("docker-compose", "-f", composePath, "down", "--volumes")
 	}
